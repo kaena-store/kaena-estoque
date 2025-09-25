@@ -1,304 +1,352 @@
-﻿2025-09-25T16:59:06.3067254Z Current runner version: '2.328.0'
-2025-09-25T16:59:06.3104821Z ##[group]Runner Image Provisioner
-2025-09-25T16:59:06.3106609Z Hosted Compute Agent
-2025-09-25T16:59:06.3107939Z Version: 20250912.392
-2025-09-25T16:59:06.3109466Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
-2025-09-25T16:59:06.3111310Z Build Date: 2025-09-12T15:23:14Z
-2025-09-25T16:59:06.3112853Z ##[endgroup]
-2025-09-25T16:59:06.3114060Z ##[group]Operating System
-2025-09-25T16:59:06.3115606Z Ubuntu
-2025-09-25T16:59:06.3116931Z 24.04.3
-2025-09-25T16:59:06.3118135Z LTS
-2025-09-25T16:59:06.3119556Z ##[endgroup]
-2025-09-25T16:59:06.3121045Z ##[group]Runner Image
-2025-09-25T16:59:06.3122560Z Image: ubuntu-24.04
-2025-09-25T16:59:06.3123877Z Version: 20250922.53.1
-2025-09-25T16:59:06.3126219Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250922.53/images/ubuntu/Ubuntu2404-Readme.md
-2025-09-25T16:59:06.3129672Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250922.53
-2025-09-25T16:59:06.3132137Z ##[endgroup]
-2025-09-25T16:59:06.3135234Z ##[group]GITHUB_TOKEN Permissions
-2025-09-25T16:59:06.3138600Z Contents: read
-2025-09-25T16:59:06.3139930Z Metadata: read
-2025-09-25T16:59:06.3141601Z Packages: read
-2025-09-25T16:59:06.3142800Z ##[endgroup]
-2025-09-25T16:59:06.3147102Z Secret source: Actions
-2025-09-25T16:59:06.3148641Z Prepare workflow directory
-2025-09-25T16:59:06.3639759Z Prepare all required actions
-2025-09-25T16:59:06.3697342Z Getting action download info
-2025-09-25T16:59:06.6201611Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
-2025-09-25T16:59:06.6927178Z Download action repository 'pnpm/action-setup@v2' (SHA:eae0cfeb286e66ffb5155f1a79b90583a127a68b)
-2025-09-25T16:59:06.9790324Z Download action repository 'FirebaseExtended/action-hosting-deploy@v0' (SHA:e2eda2e106cfa35cdbcf4ac9ddaf6c4756df2c8c)
-2025-09-25T16:59:07.2688930Z Complete job name: build_and_deploy
-2025-09-25T16:59:07.3435449Z ##[group]Run actions/checkout@v4
-2025-09-25T16:59:07.3436577Z with:
-2025-09-25T16:59:07.3437241Z   repository: kaena-store/kaena-estoque
-2025-09-25T16:59:07.3438198Z   token: ***
-2025-09-25T16:59:07.3438817Z   ssh-strict: true
-2025-09-25T16:59:07.3439439Z   ssh-user: git
-2025-09-25T16:59:07.3440081Z   persist-credentials: true
-2025-09-25T16:59:07.3441164Z   clean: true
-2025-09-25T16:59:07.3442092Z   sparse-checkout-cone-mode: true
-2025-09-25T16:59:07.3442822Z   fetch-depth: 1
-2025-09-25T16:59:07.3443451Z   fetch-tags: false
-2025-09-25T16:59:07.3444097Z   show-progress: true
-2025-09-25T16:59:07.3444733Z   lfs: false
-2025-09-25T16:59:07.3445352Z   submodules: false
-2025-09-25T16:59:07.3446009Z   set-safe-directory: true
-2025-09-25T16:59:07.3447075Z ##[endgroup]
-2025-09-25T16:59:07.4531638Z Syncing repository: kaena-store/kaena-estoque
-2025-09-25T16:59:07.4534551Z ##[group]Getting Git version info
-2025-09-25T16:59:07.4536306Z Working directory is '/home/runner/work/kaena-estoque/kaena-estoque'
-2025-09-25T16:59:07.4538283Z [command]/usr/bin/git version
-2025-09-25T16:59:07.4555256Z git version 2.51.0
-2025-09-25T16:59:07.4583216Z ##[endgroup]
-2025-09-25T16:59:07.4597694Z Temporarily overriding HOME='/home/runner/work/_temp/7c552587-1388-4b94-98f2-6737ff3e7909' before making global git config changes
-2025-09-25T16:59:07.4599592Z Adding repository directory to the temporary git global config as a safe directory
-2025-09-25T16:59:07.4611612Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kaena-estoque/kaena-estoque
-2025-09-25T16:59:07.4647832Z Deleting the contents of '/home/runner/work/kaena-estoque/kaena-estoque'
-2025-09-25T16:59:07.4652065Z ##[group]Initializing the repository
-2025-09-25T16:59:07.4657132Z [command]/usr/bin/git init /home/runner/work/kaena-estoque/kaena-estoque
-2025-09-25T16:59:07.4718194Z hint: Using 'master' as the name for the initial branch. This default branch name
-2025-09-25T16:59:07.4720159Z hint: is subject to change. To configure the initial branch name to use in all
-2025-09-25T16:59:07.4722567Z hint: of your new repositories, which will suppress this warning, call:
-2025-09-25T16:59:07.4724457Z hint:
-2025-09-25T16:59:07.4725763Z hint: 	git config --global init.defaultBranch <name>
-2025-09-25T16:59:07.4727162Z hint:
-2025-09-25T16:59:07.4728230Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
-2025-09-25T16:59:07.4729716Z hint: 'development'. The just-created branch can be renamed via this command:
-2025-09-25T16:59:07.4731268Z hint:
-2025-09-25T16:59:07.4732522Z hint: 	git branch -m <name>
-2025-09-25T16:59:07.4733996Z hint:
-2025-09-25T16:59:07.4735107Z hint: Disable this message with "git config set advice.defaultBranchName false"
-2025-09-25T16:59:07.4736670Z Initialized empty Git repository in /home/runner/work/kaena-estoque/kaena-estoque/.git/
-2025-09-25T16:59:07.4739209Z [command]/usr/bin/git remote add origin https://github.com/kaena-store/kaena-estoque
-2025-09-25T16:59:07.4768269Z ##[endgroup]
-2025-09-25T16:59:07.4769866Z ##[group]Disabling automatic garbage collection
-2025-09-25T16:59:07.4771835Z [command]/usr/bin/git config --local gc.auto 0
-2025-09-25T16:59:07.4800571Z ##[endgroup]
-2025-09-25T16:59:07.4802244Z ##[group]Setting up auth
-2025-09-25T16:59:07.4806108Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2025-09-25T16:59:07.4835188Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2025-09-25T16:59:07.5097032Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2025-09-25T16:59:07.5125796Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2025-09-25T16:59:07.5346311Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
-2025-09-25T16:59:07.5381556Z ##[endgroup]
-2025-09-25T16:59:07.5397513Z ##[group]Fetching the repository
-2025-09-25T16:59:07.5400066Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +808c79b68f717f979c175758c739c9a8475883b9:refs/remotes/origin/master
-2025-09-25T16:59:07.7669651Z From https://github.com/kaena-store/kaena-estoque
-2025-09-25T16:59:07.7673551Z  * [new ref]         808c79b68f717f979c175758c739c9a8475883b9 -> origin/master
-2025-09-25T16:59:07.7697439Z ##[endgroup]
-2025-09-25T16:59:07.7699364Z ##[group]Determining the checkout info
-2025-09-25T16:59:07.7701440Z ##[endgroup]
-2025-09-25T16:59:07.7704376Z [command]/usr/bin/git sparse-checkout disable
-2025-09-25T16:59:07.7744401Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
-2025-09-25T16:59:07.7774597Z ##[group]Checking out the ref
-2025-09-25T16:59:07.7777648Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
-2025-09-25T16:59:07.7884678Z Reset branch 'master'
-2025-09-25T16:59:07.7887477Z branch 'master' set up to track 'origin/master'.
-2025-09-25T16:59:07.7895814Z ##[endgroup]
-2025-09-25T16:59:07.7926136Z [command]/usr/bin/git log -1 --format=%H
-2025-09-25T16:59:07.7947275Z 808c79b68f717f979c175758c739c9a8475883b9
-2025-09-25T16:59:07.8291577Z ##[group]Run pnpm/action-setup@v2
-2025-09-25T16:59:07.8293068Z with:
-2025-09-25T16:59:07.8294135Z   version: 8
-2025-09-25T16:59:07.8295253Z   dest: ~/setup-pnpm
-2025-09-25T16:59:07.8296475Z   run_install: null
-2025-09-25T16:59:07.8297714Z   package_json_file: package.json
-2025-09-25T16:59:07.8299124Z   standalone: false
-2025-09-25T16:59:07.8300287Z ##[endgroup]
-2025-09-25T16:59:07.9211060Z ##[group]Running self-installer...
-2025-09-25T16:59:08.4840819Z Progress: resolved 1, reused 0, downloaded 0, added 0
-2025-09-25T16:59:08.4937884Z Packages: +1
-2025-09-25T16:59:08.4939760Z +
-2025-09-25T16:59:09.1574430Z Packages are hard linked from the content-addressable store to the virtual store.
-2025-09-25T16:59:09.1579508Z   Content-addressable store is at: /home/runner/.local/share/pnpm/store/v3
-2025-09-25T16:59:09.1581324Z   Virtual store is at:             node_modules/.pnpm
-2025-09-25T16:59:09.1793309Z 
-2025-09-25T16:59:09.1793714Z dependencies:
-2025-09-25T16:59:09.1794412Z + pnpm 8.15.9 (10.17.1 is available)
-2025-09-25T16:59:09.1794706Z 
-2025-09-25T16:59:09.1818735Z Done in 1s
-2025-09-25T16:59:09.4859621Z Progress: resolved 1, reused 0, downloaded 1, added 1, done
-2025-09-25T16:59:09.4992103Z ##[endgroup]
-2025-09-25T16:59:09.4996373Z Installation Completed!
-2025-09-25T16:59:09.5100999Z ##[group]Run pnpm install && pnpm run build
-2025-09-25T16:59:09.5101452Z [36;1mpnpm install && pnpm run build[0m
-2025-09-25T16:59:09.5141111Z shell: /usr/bin/bash -e ***0***
-2025-09-25T16:59:09.5141450Z env:
-2025-09-25T16:59:09.5141775Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
-2025-09-25T16:59:09.5142136Z ##[endgroup]
-2025-09-25T16:59:10.0805225Z  WARN  Ignoring not compatible lockfile at /home/runner/work/kaena-estoque/kaena-estoque/pnpm-lock.yaml
-2025-09-25T16:59:10.2666935Z Progress: resolved 1, reused 0, downloaded 0, added 0
-2025-09-25T16:59:11.2750094Z Progress: resolved 58, reused 0, downloaded 50, added 0
-2025-09-25T16:59:12.2812476Z Progress: resolved 123, reused 0, downloaded 110, added 0
-2025-09-25T16:59:13.3075912Z Progress: resolved 150, reused 0, downloaded 140, added 0
-2025-09-25T16:59:14.3133269Z Progress: resolved 194, reused 0, downloaded 174, added 0
-2025-09-25T16:59:15.3494080Z Progress: resolved 314, reused 0, downloaded 243, added 0
-2025-09-25T16:59:16.3706660Z Progress: resolved 352, reused 0, downloaded 271, added 0
-2025-09-25T16:59:17.3631451Z Packages: +388
-2025-09-25T16:59:17.3632295Z ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-2025-09-25T16:59:17.3731756Z Progress: resolved 452, reused 0, downloaded 368, added 0
-2025-09-25T16:59:17.8436490Z Progress: resolved 452, reused 0, downloaded 388, added 388, done
-2025-09-25T16:59:17.9342612Z .../node_modules/protobufjs postinstall$ node scripts/postinstall
-2025-09-25T16:59:17.9347495Z .../node_modules/@firebase/util postinstall$ node ./postinstall.js
-2025-09-25T16:59:17.9802136Z .../node_modules/protobufjs postinstall: Done
-2025-09-25T16:59:17.9909112Z .../node_modules/@firebase/util postinstall: Done
-2025-09-25T16:59:18.0074311Z .../node_modules/@tailwindcss/oxide postinstall$ node ./scripts/install.js
-2025-09-25T16:59:18.0203889Z .../esbuild@0.25.10/node_modules/esbuild postinstall$ node install.js
-2025-09-25T16:59:18.0669934Z .../esbuild@0.25.10/node_modules/esbuild postinstall: Done
-2025-09-25T16:59:18.0815976Z .../node_modules/@tailwindcss/oxide postinstall: Done
-2025-09-25T16:59:18.5687764Z 
-2025-09-25T16:59:18.5688321Z dependencies:
-2025-09-25T16:59:18.5688871Z + @hookform/resolvers 5.2.2
-2025-09-25T16:59:18.5689409Z + @radix-ui/react-accordion 1.2.12
-2025-09-25T16:59:18.5689954Z + @radix-ui/react-alert-dialog 1.1.15
-2025-09-25T16:59:18.5690539Z + @radix-ui/react-aspect-ratio 1.1.7
-2025-09-25T16:59:18.5691389Z + @radix-ui/react-avatar 1.1.10
-2025-09-25T16:59:18.5692074Z + @radix-ui/react-checkbox 1.3.3
-2025-09-25T16:59:18.5692617Z + @radix-ui/react-collapsible 1.1.12
-2025-09-25T16:59:18.5693205Z + @radix-ui/react-context-menu 2.2.16
-2025-09-25T16:59:18.5693768Z + @radix-ui/react-dialog 1.1.15
-2025-09-25T16:59:18.5694319Z + @radix-ui/react-dropdown-menu 2.1.16
-2025-09-25T16:59:18.5694889Z + @radix-ui/react-hover-card 1.1.15
-2025-09-25T16:59:18.5695444Z + @radix-ui/react-label 2.1.7
-2025-09-25T16:59:18.5695979Z + @radix-ui/react-menubar 1.1.16
-2025-09-25T16:59:18.5696576Z + @radix-ui/react-navigation-menu 1.2.14
-2025-09-25T16:59:18.5697196Z + @radix-ui/react-popover 1.1.15
-2025-09-25T16:59:18.5697759Z + @radix-ui/react-progress 1.1.7
-2025-09-25T16:59:18.5698306Z + @radix-ui/react-radio-group 1.3.8
-2025-09-25T16:59:18.5698879Z + @radix-ui/react-scroll-area 1.2.10
-2025-09-25T16:59:18.5699443Z + @radix-ui/react-select 2.2.6
-2025-09-25T16:59:18.5699995Z + @radix-ui/react-separator 1.1.7
-2025-09-25T16:59:18.5700545Z + @radix-ui/react-slider 1.3.6
-2025-09-25T16:59:18.5701627Z + @radix-ui/react-slot 1.2.3
-2025-09-25T16:59:18.5702164Z + @radix-ui/react-switch 1.2.6
-2025-09-25T16:59:18.5702699Z + @radix-ui/react-tabs 1.1.13
-2025-09-25T16:59:18.5703201Z + @radix-ui/react-toggle 1.1.10
-2025-09-25T16:59:18.5703740Z + @radix-ui/react-toggle-group 1.1.11
-2025-09-25T16:59:18.5704440Z + @radix-ui/react-tooltip 1.2.8
-2025-09-25T16:59:18.5704974Z + @tailwindcss/vite 4.1.13
-2025-09-25T16:59:18.5705470Z + class-variance-authority 0.7.1
-2025-09-25T16:59:18.5705990Z + clsx 2.1.1
-2025-09-25T16:59:18.5706729Z + cmdk 1.1.1
-2025-09-25T16:59:18.5707177Z + date-fns 4.1.0
-2025-09-25T16:59:18.5707593Z + embla-carousel-react 8.6.0
-2025-09-25T16:59:18.5708118Z + firebase 11.10.0 (12.3.0 is available)
-2025-09-25T16:59:18.5708677Z + framer-motion 12.23.22
-2025-09-25T16:59:18.5709156Z + input-otp 1.4.2
-2025-09-25T16:59:18.5709653Z + lucide-react 0.510.0 (0.544.0 is available)
-2025-09-25T16:59:18.5710228Z + next-themes 0.4.6
-2025-09-25T16:59:18.5710853Z + react 19.1.1
-2025-09-25T16:59:18.5711361Z + react-day-picker 8.10.1 (9.11.0 is available)
-2025-09-25T16:59:18.5711951Z + react-dom 19.1.1
-2025-09-25T16:59:18.5712424Z + react-hook-form 7.63.0
-2025-09-25T16:59:18.5712952Z + react-resizable-panels 3.0.6
-2025-09-25T16:59:18.5713491Z + react-router-dom 7.9.2
-2025-09-25T16:59:18.5720104Z + recharts 2.15.4 (3.2.1 is available)
-2025-09-25T16:59:18.5720584Z + sonner 2.0.7
-2025-09-25T16:59:18.5721153Z + tailwind-merge 3.3.1
-2025-09-25T16:59:18.5721562Z + tailwindcss 4.1.13
-2025-09-25T16:59:18.5721964Z + vaul 1.1.2
-2025-09-25T16:59:18.5722336Z + zod 3.25.76 (4.1.11 is available)
-2025-09-25T16:59:18.5722638Z 
-2025-09-25T16:59:18.5722797Z devDependencies:
-2025-09-25T16:59:18.5723171Z + @eslint/js 9.36.0
-2025-09-25T16:59:18.5723555Z + @types/react 19.1.13
-2025-09-25T16:59:18.5723951Z + @types/react-dom 19.1.9
-2025-09-25T16:59:18.5724427Z + @vitejs/plugin-react 4.7.0 (5.0.3 is available)
-2025-09-25T16:59:18.5724942Z + eslint 9.36.0
-2025-09-25T16:59:18.5725393Z + eslint-plugin-react-hooks 5.2.0
-2025-09-25T16:59:18.5725971Z + eslint-plugin-react-refresh 0.4.22
-2025-09-25T16:59:18.5726479Z + globals 16.4.0
-2025-09-25T16:59:18.5726889Z + tw-animate-css 1.4.0
-2025-09-25T16:59:18.5727334Z + vite 6.3.6 (7.1.7 is available)
-2025-09-25T16:59:18.5727637Z 
-2025-09-25T16:59:18.5728229Z  WARN  Issues with peer dependencies found
-2025-09-25T16:59:18.5728793Z .
-2025-09-25T16:59:18.5729256Z └─┬ react-day-picker 8.10.1
-2025-09-25T16:59:18.5729997Z   ├── ✕ unmet peer react@"^16.8.0 || ^17.0.0 || ^18.0.0": found 19.1.1
-2025-09-25T16:59:18.5731111Z   └── ✕ unmet peer date-fns@"^2.28.0 || ^3.0.0": found 4.1.0
-2025-09-25T16:59:18.5731551Z 
-2025-09-25T16:59:18.5731719Z Done in 8.9s
-2025-09-25T16:59:19.0474778Z 
-2025-09-25T16:59:19.0475592Z > kaena-estoque@0.0.0 build /home/runner/work/kaena-estoque/kaena-estoque
-2025-09-25T16:59:19.0476393Z > vite build
-2025-09-25T16:59:19.0476647Z 
-2025-09-25T16:59:19.3506096Z [36mvite v6.3.6 [32mbuilding for production...[36m[39m
-2025-09-25T16:59:19.4116932Z transforming...
-2025-09-25T16:59:23.1061692Z [32m✓[39m 1748 modules transformed.
-2025-09-25T16:59:23.4974425Z rendering chunks...
-2025-09-25T16:59:23.5079570Z computing gzip size...
-2025-09-25T16:59:23.5310545Z [2mdist/[22m[32mindex.html                 [39m[1m[2m  0.48 kB[22m[1m[22m[2m │ gzip:   0.30 kB[22m
-2025-09-25T16:59:23.5311908Z [2mdist/[22m[2massets/[22m[35mindex-MiQlWee8.css  [39m[1m[2m 89.12 kB[22m[1m[22m[2m │ gzip:  14.15 kB[22m
-2025-09-25T16:59:23.5313098Z [2mdist/[22m[2massets/[22m[36mindex-cMtNEeVo.js   [39m[1m[33m890.19 kB[39m[22m[2m │ gzip: 239.00 kB[22m
-2025-09-25T16:59:23.5313961Z [33m
-2025-09-25T16:59:23.5314293Z (!) Some chunks are larger than 500 kB after minification. Consider:
-2025-09-25T16:59:23.5314742Z - Using dynamic import() to code-split the application
-2025-09-25T16:59:23.5315729Z - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
-2025-09-25T16:59:23.5316589Z - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
-2025-09-25T16:59:23.5317621Z [32m✓ built in 4.15s[39m
-2025-09-25T16:59:23.5942434Z ##[group]Run ls -F
-2025-09-25T16:59:23.5942744Z [36;1mls -F[0m
-2025-09-25T16:59:23.5974939Z shell: /usr/bin/bash -e ***0***
-2025-09-25T16:59:23.5975238Z env:
-2025-09-25T16:59:23.5975534Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
-2025-09-25T16:59:23.5975882Z ##[endgroup]
-2025-09-25T16:59:23.6036596Z auth.txt
-2025-09-25T16:59:23.6037007Z components.json
-2025-09-25T16:59:23.6037399Z dist/
-2025-09-25T16:59:23.6037738Z eslint.config.js
-2025-09-25T16:59:23.6037986Z index.html
-2025-09-25T16:59:23.6038209Z jsconfig.json
-2025-09-25T16:59:23.6038432Z node_modules/
-2025-09-25T16:59:23.6038661Z package.json
-2025-09-25T16:59:23.6038893Z pnpm-lock.yaml
-2025-09-25T16:59:23.6039128Z public/
-2025-09-25T16:59:23.6039341Z src/
-2025-09-25T16:59:23.6039647Z vite.config.js
-2025-09-25T16:59:23.6062161Z ##[group]Run ls -F .github/workflows
-2025-09-25T16:59:23.6062527Z [36;1mls -F .github/workflows[0m
-2025-09-25T16:59:23.6091159Z shell: /usr/bin/bash -e ***0***
-2025-09-25T16:59:23.6091455Z env:
-2025-09-25T16:59:23.6091743Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
-2025-09-25T16:59:23.6092099Z ##[endgroup]
-2025-09-25T16:59:23.6148605Z firebase-hosting-merge.yml
-2025-09-25T16:59:23.6149160Z firebase-hosting-pull-request.yml
-2025-09-25T16:59:23.6212491Z ##[group]Run FirebaseExtended/action-hosting-deploy@v0
-2025-09-25T16:59:23.6212874Z with:
-2025-09-25T16:59:23.6213247Z   repoToken: ***
-2025-09-25T16:59:23.6222646Z   firebaseServiceAccount: ***
+﻿2025-09-25T17:17:26.7923508Z Current runner version: '2.328.0'
+2025-09-25T17:17:26.7950509Z ##[group]Runner Image Provisioner
+2025-09-25T17:17:26.7951619Z Hosted Compute Agent
+2025-09-25T17:17:26.7952539Z Version: 20250912.392
+2025-09-25T17:17:26.7953443Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
+2025-09-25T17:17:26.7954356Z Build Date: 2025-09-12T15:23:14Z
+2025-09-25T17:17:26.7955209Z ##[endgroup]
+2025-09-25T17:17:26.7955901Z ##[group]Operating System
+2025-09-25T17:17:26.7956745Z Ubuntu
+2025-09-25T17:17:26.7957407Z 24.04.3
+2025-09-25T17:17:26.7958104Z LTS
+2025-09-25T17:17:26.7958721Z ##[endgroup]
+2025-09-25T17:17:26.7959469Z ##[group]Runner Image
+2025-09-25T17:17:26.7960229Z Image: ubuntu-24.04
+2025-09-25T17:17:26.7960993Z Version: 20250922.53.1
+2025-09-25T17:17:26.7962574Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250922.53/images/ubuntu/Ubuntu2404-Readme.md
+2025-09-25T17:17:26.7965145Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250922.53
+2025-09-25T17:17:26.7966609Z ##[endgroup]
+2025-09-25T17:17:26.7968186Z ##[group]GITHUB_TOKEN Permissions
+2025-09-25T17:17:26.7970477Z Contents: read
+2025-09-25T17:17:26.7971472Z Metadata: read
+2025-09-25T17:17:26.7972450Z Packages: read
+2025-09-25T17:17:26.7973272Z ##[endgroup]
+2025-09-25T17:17:26.7976025Z Secret source: Actions
+2025-09-25T17:17:26.7977349Z Prepare workflow directory
+2025-09-25T17:17:26.8322276Z Prepare all required actions
+2025-09-25T17:17:26.8361760Z Getting action download info
+2025-09-25T17:17:27.1783981Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-09-25T17:17:27.2644846Z Download action repository 'pnpm/action-setup@v2' (SHA:eae0cfeb286e66ffb5155f1a79b90583a127a68b)
+2025-09-25T17:17:27.6250036Z Download action repository 'FirebaseExtended/action-hosting-deploy@v0' (SHA:e2eda2e106cfa35cdbcf4ac9ddaf6c4756df2c8c)
+2025-09-25T17:17:27.9176932Z Complete job name: build_and_deploy
+2025-09-25T17:17:27.9882910Z ##[group]Run actions/checkout@v4
+2025-09-25T17:17:27.9884059Z with:
+2025-09-25T17:17:27.9884621Z   repository: kaena-store/kaena-estoque
+2025-09-25T17:17:27.9885438Z   token: ***
+2025-09-25T17:17:27.9885952Z   ssh-strict: true
+2025-09-25T17:17:27.9886486Z   ssh-user: git
+2025-09-25T17:17:27.9887018Z   persist-credentials: true
+2025-09-25T17:17:27.9887608Z   clean: true
+2025-09-25T17:17:27.9888138Z   sparse-checkout-cone-mode: true
+2025-09-25T17:17:27.9888768Z   fetch-depth: 1
+2025-09-25T17:17:27.9889285Z   fetch-tags: false
+2025-09-25T17:17:27.9889819Z   show-progress: true
+2025-09-25T17:17:27.9890359Z   lfs: false
+2025-09-25T17:17:27.9890856Z   submodules: false
+2025-09-25T17:17:27.9891393Z   set-safe-directory: true
+2025-09-25T17:17:27.9892408Z ##[endgroup]
+2025-09-25T17:17:28.0978153Z Syncing repository: kaena-store/kaena-estoque
+2025-09-25T17:17:28.0980505Z ##[group]Getting Git version info
+2025-09-25T17:17:28.0982062Z Working directory is '/home/runner/work/kaena-estoque/kaena-estoque'
+2025-09-25T17:17:28.0983916Z [command]/usr/bin/git version
+2025-09-25T17:17:28.1034206Z git version 2.51.0
+2025-09-25T17:17:28.1060812Z ##[endgroup]
+2025-09-25T17:17:28.1075808Z Temporarily overriding HOME='/home/runner/work/_temp/ce499f16-5ae0-4e4f-852f-75c87d43c1df' before making global git config changes
+2025-09-25T17:17:28.1078429Z Adding repository directory to the temporary git global config as a safe directory
+2025-09-25T17:17:28.1088399Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kaena-estoque/kaena-estoque
+2025-09-25T17:17:28.1124803Z Deleting the contents of '/home/runner/work/kaena-estoque/kaena-estoque'
+2025-09-25T17:17:28.1128439Z ##[group]Initializing the repository
+2025-09-25T17:17:28.1132325Z [command]/usr/bin/git init /home/runner/work/kaena-estoque/kaena-estoque
+2025-09-25T17:17:28.1196201Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-09-25T17:17:28.1198355Z hint: is subject to change. To configure the initial branch name to use in all
+2025-09-25T17:17:28.1200426Z hint: of your new repositories, which will suppress this warning, call:
+2025-09-25T17:17:28.1202403Z hint:
+2025-09-25T17:17:28.1203232Z hint: 	git config --global init.defaultBranch <name>
+2025-09-25T17:17:28.1204091Z hint:
+2025-09-25T17:17:28.1204937Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-09-25T17:17:28.1206362Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-09-25T17:17:28.1207851Z hint:
+2025-09-25T17:17:28.1208519Z hint: 	git branch -m <name>
+2025-09-25T17:17:28.1209253Z hint:
+2025-09-25T17:17:28.1210159Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-09-25T17:17:28.1211743Z Initialized empty Git repository in /home/runner/work/kaena-estoque/kaena-estoque/.git/
+2025-09-25T17:17:28.1215324Z [command]/usr/bin/git remote add origin https://github.com/kaena-store/kaena-estoque
+2025-09-25T17:17:28.1250842Z ##[endgroup]
+2025-09-25T17:17:28.1255207Z ##[group]Disabling automatic garbage collection
+2025-09-25T17:17:28.1256209Z [command]/usr/bin/git config --local gc.auto 0
+2025-09-25T17:17:28.1283891Z ##[endgroup]
+2025-09-25T17:17:28.1285336Z ##[group]Setting up auth
+2025-09-25T17:17:28.1289844Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-09-25T17:17:28.1322052Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-09-25T17:17:28.1625170Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-09-25T17:17:28.1658699Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-09-25T17:17:28.1888737Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-09-25T17:17:28.1924659Z ##[endgroup]
+2025-09-25T17:17:28.1926855Z ##[group]Fetching the repository
+2025-09-25T17:17:28.1944465Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +47a0c475e9276c8234f1a0c65a092be0ecfdd599:refs/remotes/origin/master
+2025-09-25T17:17:28.4087306Z From https://github.com/kaena-store/kaena-estoque
+2025-09-25T17:17:28.4088741Z  * [new ref]         47a0c475e9276c8234f1a0c65a092be0ecfdd599 -> origin/master
+2025-09-25T17:17:28.4119012Z ##[endgroup]
+2025-09-25T17:17:28.4120800Z ##[group]Determining the checkout info
+2025-09-25T17:17:28.4122720Z ##[endgroup]
+2025-09-25T17:17:28.4126616Z [command]/usr/bin/git sparse-checkout disable
+2025-09-25T17:17:28.4166881Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-09-25T17:17:28.4195804Z ##[group]Checking out the ref
+2025-09-25T17:17:28.4199059Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+2025-09-25T17:17:28.4286969Z Reset branch 'master'
+2025-09-25T17:17:28.4290438Z branch 'master' set up to track 'origin/master'.
+2025-09-25T17:17:28.4297064Z ##[endgroup]
+2025-09-25T17:17:28.4329827Z [command]/usr/bin/git log -1 --format=%H
+2025-09-25T17:17:28.4351776Z 47a0c475e9276c8234f1a0c65a092be0ecfdd599
+2025-09-25T17:17:28.4653112Z ##[group]Run pnpm/action-setup@v2
+2025-09-25T17:17:28.4653883Z with:
+2025-09-25T17:17:28.4654400Z   version: 8
+2025-09-25T17:17:28.4654946Z   dest: ~/setup-pnpm
+2025-09-25T17:17:28.4655524Z   run_install: null
+2025-09-25T17:17:28.4656120Z   package_json_file: package.json
+2025-09-25T17:17:28.4656775Z   standalone: false
+2025-09-25T17:17:28.4657320Z ##[endgroup]
+2025-09-25T17:17:28.5560293Z ##[group]Running self-installer...
+2025-09-25T17:17:29.2105082Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2025-09-25T17:17:29.2203864Z Packages: +1
+2025-09-25T17:17:29.2204656Z +
+2025-09-25T17:17:29.8414235Z Packages are hard linked from the content-addressable store to the virtual store.
+2025-09-25T17:17:29.8415960Z   Content-addressable store is at: /home/runner/.local/share/pnpm/store/v3
+2025-09-25T17:17:29.8417585Z   Virtual store is at:             node_modules/.pnpm
+2025-09-25T17:17:29.8628007Z 
+2025-09-25T17:17:29.8628599Z dependencies:
+2025-09-25T17:17:29.8629293Z + pnpm 8.15.9 (10.17.1 is available)
+2025-09-25T17:17:29.8629688Z 
+2025-09-25T17:17:29.8654026Z Done in 1.1s
+2025-09-25T17:17:30.2117088Z Progress: resolved 1, reused 0, downloaded 1, added 1, done
+2025-09-25T17:17:30.2256533Z ##[endgroup]
+2025-09-25T17:17:30.2259348Z Installation Completed!
+2025-09-25T17:17:30.2371587Z ##[group]Run pnpm install && pnpm run build
+2025-09-25T17:17:30.2372405Z [36;1mpnpm install && pnpm run build[0m
+2025-09-25T17:17:30.2411109Z shell: /usr/bin/bash -e ***0***
+2025-09-25T17:17:30.2411473Z env:
+2025-09-25T17:17:30.2411812Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-25T17:17:30.2412411Z ##[endgroup]
+2025-09-25T17:17:32.4760185Z  WARN  Ignoring not compatible lockfile at /home/runner/work/kaena-estoque/kaena-estoque/pnpm-lock.yaml
+2025-09-25T17:17:32.7074508Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2025-09-25T17:17:33.7494263Z Progress: resolved 57, reused 0, downloaded 51, added 0
+2025-09-25T17:17:34.7486512Z Progress: resolved 130, reused 0, downloaded 118, added 0
+2025-09-25T17:17:35.7587580Z Progress: resolved 153, reused 0, downloaded 143, added 0
+2025-09-25T17:17:36.7586294Z Progress: resolved 214, reused 0, downloaded 198, added 0
+2025-09-25T17:17:37.7933777Z Progress: resolved 373, reused 0, downloaded 285, added 0
+2025-09-25T17:17:38.7909563Z Progress: resolved 399, reused 0, downloaded 334, added 0
+2025-09-25T17:17:39.7920565Z Progress: resolved 399, reused 0, downloaded 335, added 0
+2025-09-25T17:17:42.1636900Z Progress: resolved 400, reused 0, downloaded 335, added 0
+2025-09-25T17:17:43.2124813Z Progress: resolved 414, reused 0, downloaded 347, added 0
+2025-09-25T17:17:43.9720658Z Packages: +388
+2025-09-25T17:17:43.9728118Z ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2025-09-25T17:17:44.2126006Z Progress: resolved 452, reused 0, downloaded 388, added 253
+2025-09-25T17:17:44.5370234Z Progress: resolved 452, reused 0, downloaded 388, added 388, done
+2025-09-25T17:17:44.6487582Z .../node_modules/@firebase/util postinstall$ node ./postinstall.js
+2025-09-25T17:17:44.6492209Z .../node_modules/protobufjs postinstall$ node scripts/postinstall
+2025-09-25T17:17:44.6975334Z .../node_modules/@firebase/util postinstall: Done
+2025-09-25T17:17:44.7095283Z .../node_modules/protobufjs postinstall: Done
+2025-09-25T17:17:44.7316385Z .../node_modules/@tailwindcss/oxide postinstall$ node ./scripts/install.js
+2025-09-25T17:17:44.7502242Z .../esbuild@0.25.10/node_modules/esbuild postinstall$ node install.js
+2025-09-25T17:17:44.8126107Z .../esbuild@0.25.10/node_modules/esbuild postinstall: Done
+2025-09-25T17:17:44.8289537Z .../node_modules/@tailwindcss/oxide postinstall: Done
+2025-09-25T17:17:45.3756735Z 
+2025-09-25T17:17:45.3757244Z dependencies:
+2025-09-25T17:17:45.3757707Z + @hookform/resolvers 5.2.2
+2025-09-25T17:17:45.3758078Z + @radix-ui/react-accordion 1.2.12
+2025-09-25T17:17:45.3758415Z + @radix-ui/react-alert-dialog 1.1.15
+2025-09-25T17:17:45.3758740Z + @radix-ui/react-aspect-ratio 1.1.7
+2025-09-25T17:17:45.3759045Z + @radix-ui/react-avatar 1.1.10
+2025-09-25T17:17:45.3759334Z + @radix-ui/react-checkbox 1.3.3
+2025-09-25T17:17:45.3759639Z + @radix-ui/react-collapsible 1.1.12
+2025-09-25T17:17:45.3759959Z + @radix-ui/react-context-menu 2.2.16
+2025-09-25T17:17:45.3760268Z + @radix-ui/react-dialog 1.1.15
+2025-09-25T17:17:45.3760595Z + @radix-ui/react-dropdown-menu 2.1.16
+2025-09-25T17:17:45.3760911Z + @radix-ui/react-hover-card 1.1.15
+2025-09-25T17:17:45.3761207Z + @radix-ui/react-label 2.1.7
+2025-09-25T17:17:45.3761490Z + @radix-ui/react-menubar 1.1.16
+2025-09-25T17:17:45.3761804Z + @radix-ui/react-navigation-menu 1.2.14
+2025-09-25T17:17:45.3762364Z + @radix-ui/react-popover 1.1.15
+2025-09-25T17:17:45.3762673Z + @radix-ui/react-progress 1.1.7
+2025-09-25T17:17:45.3762987Z + @radix-ui/react-radio-group 1.3.8
+2025-09-25T17:17:45.3763563Z + @radix-ui/react-scroll-area 1.2.10
+2025-09-25T17:17:45.3763871Z + @radix-ui/react-select 2.2.6
+2025-09-25T17:17:45.3764163Z + @radix-ui/react-separator 1.1.7
+2025-09-25T17:17:45.3764457Z + @radix-ui/react-slider 1.3.6
+2025-09-25T17:17:45.3764730Z + @radix-ui/react-slot 1.2.3
+2025-09-25T17:17:45.3765004Z + @radix-ui/react-switch 1.2.6
+2025-09-25T17:17:45.3765286Z + @radix-ui/react-tabs 1.1.13
+2025-09-25T17:17:45.3765566Z + @radix-ui/react-toggle 1.1.10
+2025-09-25T17:17:45.3766061Z + @radix-ui/react-toggle-group 1.1.11
+2025-09-25T17:17:45.3766376Z + @radix-ui/react-tooltip 1.2.8
+2025-09-25T17:17:45.3766656Z + @tailwindcss/vite 4.1.13
+2025-09-25T17:17:45.3766937Z + class-variance-authority 0.7.1
+2025-09-25T17:17:45.3767211Z + clsx 2.1.1
+2025-09-25T17:17:45.3767430Z + cmdk 1.1.1
+2025-09-25T17:17:45.3767647Z + date-fns 4.1.0
+2025-09-25T17:17:45.3767893Z + embla-carousel-react 8.6.0
+2025-09-25T17:17:45.3768185Z + firebase 11.10.0 (12.3.0 is available)
+2025-09-25T17:17:45.3768496Z + framer-motion 12.23.22
+2025-09-25T17:17:45.3768755Z + input-otp 1.4.2
+2025-09-25T17:17:45.3769049Z + lucide-react 0.510.0 (0.544.0 is available)
+2025-09-25T17:17:45.3769588Z + next-themes 0.4.6
+2025-09-25T17:17:45.3770015Z + react 19.1.1
+2025-09-25T17:17:45.3770468Z + react-day-picker 8.10.1 (9.11.0 is available)
+2025-09-25T17:17:45.3771039Z + react-dom 19.1.1
+2025-09-25T17:17:45.3771490Z + react-hook-form 7.63.0
+2025-09-25T17:17:45.3772093Z + react-resizable-panels 3.0.6
+2025-09-25T17:17:45.3772625Z + react-router-dom 7.9.2
+2025-09-25T17:17:45.3773108Z + recharts 2.15.4 (3.2.1 is available)
+2025-09-25T17:17:45.3773591Z + sonner 2.0.7
+2025-09-25T17:17:45.3773963Z + tailwind-merge 3.3.1
+2025-09-25T17:17:45.3774368Z + tailwindcss 4.1.13
+2025-09-25T17:17:45.3774751Z + vaul 1.1.2
+2025-09-25T17:17:45.3775123Z + zod 3.25.76 (4.1.11 is available)
+2025-09-25T17:17:45.3775427Z 
+2025-09-25T17:17:45.3775591Z devDependencies:
+2025-09-25T17:17:45.3775969Z + @eslint/js 9.36.0
+2025-09-25T17:17:45.3776357Z + @types/react 19.1.13
+2025-09-25T17:17:45.3776775Z + @types/react-dom 19.1.9
+2025-09-25T17:17:45.3777255Z + @vitejs/plugin-react 4.7.0 (5.0.3 is available)
+2025-09-25T17:17:45.3777780Z + eslint 9.36.0
+2025-09-25T17:17:45.3778196Z + eslint-plugin-react-hooks 5.2.0
+2025-09-25T17:17:45.3778713Z + eslint-plugin-react-refresh 0.4.22
+2025-09-25T17:17:45.3779194Z + globals 16.4.0
+2025-09-25T17:17:45.3779576Z + tw-animate-css 1.4.0
+2025-09-25T17:17:45.3779990Z + vite 6.3.6 (7.1.7 is available)
+2025-09-25T17:17:45.3780283Z 
+2025-09-25T17:17:45.3782436Z  WARN  Issues with peer dependencies found
+2025-09-25T17:17:45.3782969Z .
+2025-09-25T17:17:45.3783421Z └─┬ react-day-picker 8.10.1
+2025-09-25T17:17:45.3784255Z   ├── ✕ unmet peer react@"^16.8.0 || ^17.0.0 || ^18.0.0": found 19.1.1
+2025-09-25T17:17:45.3785325Z   └── ✕ unmet peer date-fns@"^2.28.0 || ^3.0.0": found 4.1.0
+2025-09-25T17:17:45.3785758Z 
+2025-09-25T17:17:45.8739417Z Done in 13.7s
+2025-09-25T17:17:45.8739737Z 
+2025-09-25T17:17:45.8740044Z > kaena-estoque@0.0.0 build /home/runner/work/kaena-estoque/kaena-estoque
+2025-09-25T17:17:45.8740532Z > vite build
+2025-09-25T17:17:45.8740684Z 
+2025-09-25T17:17:46.2503182Z [36mvite v6.3.6 [32mbuilding for production...[36m[39m
+2025-09-25T17:17:46.3282716Z transforming...
+2025-09-25T17:17:50.3355863Z [32m✓[39m 1748 modules transformed.
+2025-09-25T17:17:50.7478686Z rendering chunks...
+2025-09-25T17:17:50.7592756Z computing gzip size...
+2025-09-25T17:17:50.7849344Z [2mdist/[22m[32mindex.html                 [39m[1m[2m  0.48 kB[22m[1m[22m[2m │ gzip:   0.30 kB[22m
+2025-09-25T17:17:50.7850913Z [2mdist/[22m[2massets/[22m[35mindex-MiQlWee8.css  [39m[1m[2m 89.12 kB[22m[1m[22m[2m │ gzip:  14.15 kB[22m
+2025-09-25T17:17:50.7852536Z [2mdist/[22m[2massets/[22m[36mindex-cMtNEeVo.js   [39m[1m[33m890.19 kB[39m[22m[2m │ gzip: 239.00 kB[22m
+2025-09-25T17:17:50.7853535Z [33m
+2025-09-25T17:17:50.7854103Z (!) Some chunks are larger than 500 kB after minification. Consider:
+2025-09-25T17:17:50.7854927Z - Using dynamic import() to code-split the application
+2025-09-25T17:17:50.7856733Z - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+2025-09-25T17:17:50.7858050Z - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+2025-09-25T17:17:50.7858807Z [32m✓ built in 4.49s[39m
+2025-09-25T17:17:50.8532655Z ##[group]Run pnpm install dotenv
+2025-09-25T17:17:50.8533077Z [36;1mpnpm install dotenv[0m
+2025-09-25T17:17:50.8567120Z shell: /usr/bin/bash -e ***0***
+2025-09-25T17:17:50.8567441Z env:
+2025-09-25T17:17:50.8567749Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-25T17:17:50.8568138Z ##[endgroup]
+2025-09-25T17:17:51.4943290Z Progress: resolved 0, reused 1, downloaded 0, added 0
+2025-09-25T17:17:52.3291432Z Packages: +1
+2025-09-25T17:17:52.3292044Z +
+2025-09-25T17:17:52.3380603Z Progress: resolved 453, reused 388, downloaded 1, added 1, done
+2025-09-25T17:17:52.6033045Z 
+2025-09-25T17:17:52.6033627Z dependencies:
+2025-09-25T17:17:52.6034018Z + dotenv 17.2.2
+2025-09-25T17:17:52.6034174Z 
+2025-09-25T17:17:52.6046053Z  WARN  Issues with peer dependencies found
+2025-09-25T17:17:52.6046571Z .
+2025-09-25T17:17:52.6046887Z └─┬ react-day-picker 8.10.1
+2025-09-25T17:17:52.6047328Z   ├── ✕ unmet peer date-fns@"^2.28.0 || ^3.0.0": found 4.1.0
+2025-09-25T17:17:52.6047911Z   └── ✕ unmet peer react@"^16.8.0 || ^17.0.0 || ^18.0.0": found 19.1.1
+2025-09-25T17:17:52.6048195Z 
+2025-09-25T17:17:52.6071411Z Done in 1.7s
+2025-09-25T17:17:52.6452952Z ##[group]Run node -r dotenv/config -e "console.log('Environment variables loaded')" pnpm run build
+2025-09-25T17:17:52.6453754Z [36;1mnode -r dotenv/config -e "console.log('Environment variables loaded')" pnpm run build[0m
+2025-09-25T17:17:52.6487664Z shell: /usr/bin/bash -e ***0***
+2025-09-25T17:17:52.6487978Z env:
+2025-09-25T17:17:52.6488292Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-25T17:17:52.6488665Z ##[endgroup]
+2025-09-25T17:17:52.6847881Z Environment variables loaded
+2025-09-25T17:17:52.6916268Z ##[group]Run ls -F
+2025-09-25T17:17:52.6916579Z [36;1mls -F[0m
+2025-09-25T17:17:52.6949697Z shell: /usr/bin/bash -e ***0***
+2025-09-25T17:17:52.6950001Z env:
+2025-09-25T17:17:52.6950298Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-25T17:17:52.6950652Z ##[endgroup]
+2025-09-25T17:17:52.7017482Z auth.txt
+2025-09-25T17:17:52.7017891Z components.json
+2025-09-25T17:17:52.7018300Z dist/
+2025-09-25T17:17:52.7018700Z eslint.config.js
+2025-09-25T17:17:52.7019144Z firebase.json
+2025-09-25T17:17:52.7019567Z index.html
+2025-09-25T17:17:52.7019987Z jsconfig.json
+2025-09-25T17:17:52.7020393Z logs/
+2025-09-25T17:17:52.7020772Z node_modules/
+2025-09-25T17:17:52.7021189Z package.json
+2025-09-25T17:17:52.7042685Z pnpm-lock.yaml
+2025-09-25T17:17:52.7043112Z public/
+2025-09-25T17:17:52.7043486Z src/
+2025-09-25T17:17:52.7043842Z vite.config.js
+2025-09-25T17:17:52.7068322Z ##[group]Run ls -F .github/workflows
+2025-09-25T17:17:52.7068818Z [36;1mls -F .github/workflows[0m
+2025-09-25T17:17:52.7100434Z shell: /usr/bin/bash -e ***0***
+2025-09-25T17:17:52.7100751Z env:
+2025-09-25T17:17:52.7101061Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-25T17:17:52.7101432Z ##[endgroup]
+2025-09-25T17:17:52.7165067Z firebase-hosting-merge.yml
+2025-09-25T17:17:52.7165701Z firebase-hosting-pull-request.yml
+2025-09-25T17:17:52.7233072Z ##[group]Run FirebaseExtended/action-hosting-deploy@v0
+2025-09-25T17:17:52.7233471Z with:
+2025-09-25T17:17:52.7233868Z   repoToken: ***
+2025-09-25T17:17:52.7243420Z   firebaseServiceAccount: ***
 
-2025-09-25T16:59:23.6222949Z   channelId: live
-2025-09-25T16:59:23.6223198Z   projectId: kaena-d99b5
-2025-09-25T16:59:23.6223458Z   expires: 7d
-2025-09-25T16:59:23.6223687Z   entryPoint: .
-2025-09-25T16:59:23.6223934Z   firebaseToolsVersion: latest
-2025-09-25T16:59:23.6224214Z   disableComment: false
-2025-09-25T16:59:23.6224466Z   force: false
-2025-09-25T16:59:23.6224689Z env:
-2025-09-25T16:59:23.6224964Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
-2025-09-25T16:59:23.6225316Z ##[endgroup]
-2025-09-25T16:59:23.6860063Z ##[group]Verifying firebase.json exists
-2025-09-25T16:59:23.6887276Z ##[error]firebase.json file not found. If your firebase.json file is not in the root of your repo, edit the entryPoint option of this GitHub action.
-2025-09-25T16:59:23.6898118Z ***
-2025-09-25T16:59:23.6898617Z   conclusion: 'failure',
-2025-09-25T16:59:23.6899103Z   output: ***
-2025-09-25T16:59:23.6899538Z     title: 'Deploy preview failed',
-2025-09-25T16:59:23.6900860Z     summary: 'Error: firebase.json file not found. If your firebase.json file is not in the root of your repo, edit the entryPoint option of this GitHub action.'
-2025-09-25T16:59:23.6901932Z   ***
-2025-09-25T16:59:23.6922112Z ***
-2025-09-25T16:59:23.7007341Z Post job cleanup.
-2025-09-25T16:59:23.7880591Z Pruning is unnecessary.
-2025-09-25T16:59:23.7999617Z Post job cleanup.
-2025-09-25T16:59:23.8931189Z [command]/usr/bin/git version
-2025-09-25T16:59:23.8968779Z git version 2.51.0
-2025-09-25T16:59:23.9013893Z Temporarily overriding HOME='/home/runner/work/_temp/6ecdd4e7-229a-45c2-ab6a-584919198d59' before making global git config changes
-2025-09-25T16:59:23.9015316Z Adding repository directory to the temporary git global config as a safe directory
-2025-09-25T16:59:23.9020448Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kaena-estoque/kaena-estoque
-2025-09-25T16:59:23.9057160Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2025-09-25T16:59:23.9089860Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2025-09-25T16:59:23.9313140Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2025-09-25T16:59:23.9334207Z http.https://github.com/.extraheader
-2025-09-25T16:59:23.9346476Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
-2025-09-25T16:59:23.9379547Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2025-09-25T16:59:23.9700477Z Cleaning up orphan processes
+2025-09-25T17:17:52.7243731Z   channelId: live
+2025-09-25T17:17:52.7243990Z   projectId: kaena-d99b5
+2025-09-25T17:17:52.7244266Z   expires: 7d
+2025-09-25T17:17:52.7244501Z   entryPoint: .
+2025-09-25T17:17:52.7244757Z   firebaseToolsVersion: latest
+2025-09-25T17:17:52.7245044Z   disableComment: false
+2025-09-25T17:17:52.7245295Z   force: false
+2025-09-25T17:17:52.7245522Z env:
+2025-09-25T17:17:52.7245805Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-25T17:17:52.7246361Z ##[endgroup]
+2025-09-25T17:17:52.7902016Z ##[group]Verifying firebase.json exists
+2025-09-25T17:17:52.7908036Z firebase.json file found. Continuing deploy.
+2025-09-25T17:17:52.7912455Z ##[endgroup]
+2025-09-25T17:17:52.7913230Z ##[group]Setting up CLI credentials
+2025-09-25T17:17:52.7930945Z Created a temporary file with Application Default Credentials.
+2025-09-25T17:17:52.7932178Z ##[endgroup]
+2025-09-25T17:17:52.7932967Z ##[group]Deploying to production site
+2025-09-25T17:17:52.7976144Z [command]/usr/local/bin/npx firebase-tools@latest deploy --only hosting --project kaena-d99b5 --json
+2025-09-25T17:17:58.2442060Z npm warn exec The following package was not found and will be installed: firebase-tools@14.17.0
+2025-09-25T17:18:12.6428022Z npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+2025-09-25T17:18:21.3381307Z ***
+2025-09-25T17:18:21.3382051Z   "status": "success",
+2025-09-25T17:18:21.3382571Z   "result": ***
+2025-09-25T17:18:21.3383419Z     "hosting": "projects/541887307477/sites/kaena-d99b5/versions/afe2d04793f8281c"
+2025-09-25T17:18:21.3384334Z   ***
+2025-09-25T17:18:21.4076587Z ***::endgroup::
+2025-09-25T17:18:21.4084593Z ***
+2025-09-25T17:18:21.4085028Z   details_url: 'https://kaena-d99b5.web.app/',
+2025-09-25T17:18:21.4085422Z   conclusion: 'success',
+2025-09-25T17:18:21.4085743Z   output: ***
+2025-09-25T17:18:21.4086013Z     title: 'Production deploy succeeded',
+2025-09-25T17:18:21.4086438Z     summary: '[kaena-d99b5.web.app](https://kaena-d99b5.web.app/)'
+2025-09-25T17:18:21.4086820Z   ***
+2025-09-25T17:18:21.4087035Z ***
+2025-09-25T17:18:21.4167589Z Post job cleanup.
+2025-09-25T17:18:21.5061370Z Pruning is unnecessary.
+2025-09-25T17:18:21.5160976Z Post job cleanup.
+2025-09-25T17:18:21.6118444Z [command]/usr/bin/git version
+2025-09-25T17:18:21.6156255Z git version 2.51.0
+2025-09-25T17:18:21.6199538Z Temporarily overriding HOME='/home/runner/work/_temp/a51baec9-428c-4dc5-aa97-12578ad2f4ef' before making global git config changes
+2025-09-25T17:18:21.6200606Z Adding repository directory to the temporary git global config as a safe directory
+2025-09-25T17:18:21.6205312Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kaena-estoque/kaena-estoque
+2025-09-25T17:18:21.6240643Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-09-25T17:18:21.6275660Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-09-25T17:18:21.6507166Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-09-25T17:18:21.6529356Z http.https://github.com/.extraheader
+2025-09-25T17:18:21.6541593Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-09-25T17:18:21.6572402Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-09-25T17:18:21.6916735Z Cleaning up orphan processes

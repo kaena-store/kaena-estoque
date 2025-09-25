@@ -1,5 +1,0 @@
-2025-09-25T16:59:01.2230000Z Requested labels: ubuntu-latest
-2025-09-25T16:59:01.2230000Z Job defined at: kaena-store/kaena-estoque/.github/workflows/firebase-hosting-merge.yml@refs/heads/master
-2025-09-25T16:59:01.2230000Z Waiting for a runner to pick up this job...
-2025-09-25T16:59:01.5750000Z Job is about to start running on the hosted runner: GitHub Actions 1000000015
-2025-09-25T16:59:01.5740000Z Job is waiting for a hosted runner to come online.
