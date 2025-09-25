@@ -21,5 +21,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KAENA_D99B5 }}
           channelId: live
           projectId: kaena-d99b5
-          projectPath: .
-          cwd: .
+          entryPoint: ./
