@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getFirestore, collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
+import { getFirestore, collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, query, where } from 'firebase/firestore';
 import { app } from '../firebase';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -11,9 +11,8 @@ import { Plus, Edit, Trash2, Package } from 'lucide-react';
 import { Alert, AlertDescription } from './ui/alert';
 
 const db = getFirestore(app);
-const produtosCollection = collection(db, 'produtos');
 
-const Estoque = () => {
+const Estoque = ({ user }) => {
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -28,7 +27,12 @@ const Estoque = () => {
   const tamanhos = ['PP', 'P', 'M', 'G', 'GG', 'XG', 'XXG'];
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(produtosCollection, (snapshot) => {
+    if (!user) return;
+
+    const produtosCollection = collection(db, 'produtos');
+    const q = query(produtosCollection, where("userId", "==", user.uid));
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
       const produtosData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setProdutos(produtosData);
       setLoading(false);
@@ -39,7 +43,7 @@ const Estoque = () => {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,11 +55,17 @@ const Estoque = () => {
     }
 
     try {
+      const productData = {
+        ...formData,
+        userId: user.uid,
+      };
+
       if (editingProduct) {
         const productDoc = doc(db, 'produtos', editingProduct.id);
-        await updateDoc(productDoc, formData);
+        await updateDoc(productDoc, productData);
       } else {
-        await addDoc(produtosCollection, formData);
+        const produtosCollection = collection(db, 'produtos');
+        await addDoc(produtosCollection, productData);
       }
       
       setDialogOpen(false);

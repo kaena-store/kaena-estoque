@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { app } from '../firebase'; // Corrected import
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Label } from './ui/label';
 import { Alert, AlertDescription } from './ui/alert';
+import { getAuth } from 'firebase/auth'; // Import getAuth
+
+const auth = getAuth(app); // Initialize auth
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLogin, setIsLogin] = useState(true);
+  const [email, setEmail] = useState('kaenaadm@gmail.com');
+  const [password, setPassword] = useState('$Sucesso2025
+
+);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -20,11 +24,7 @@ const Login = () => {
     setError('');
 
     try {
-      if (isLogin) {
-        await signInWithEmailAndPassword(auth, email, password);
-      } else {
-        await createUserWithEmailAndPassword(auth, email, password);
-      }
+      await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -40,7 +40,7 @@ const Login = () => {
             Kaena Estoque
           </CardTitle>
           <CardDescription>
-            {isLogin ? 'Entre na sua conta' : 'Crie sua conta'}
+            Entre na sua conta
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -73,18 +73,9 @@ const Login = () => {
               </Alert>
             )}
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? 'Carregando...' : (isLogin ? 'Entrar' : 'Cadastrar')}
+              {loading ? 'Carregando...' : 'Entrar'}
             </Button>
           </form>
-          <div className="mt-4 text-center">
-            <Button
-              variant="link"
-              onClick={() => setIsLogin(!isLogin)}
-              className="text-sm"
-            >
-              {isLogin ? 'Não tem conta? Cadastre-se' : 'Já tem conta? Entre'}
-            </Button>
-          </div>
         </CardContent>
       </Card>
     </div>

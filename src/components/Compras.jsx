@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getFirestore, collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, runTransaction } from 'firebase/firestore';
+import { getFirestore, collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, runTransaction, query, where } from 'firebase/firestore';
 import { app } from '../firebase';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -11,10 +11,8 @@ import { Plus, Edit, Trash2, ShoppingCart } from 'lucide-react';
 import { Alert, AlertDescription } from './ui/alert';
 
 const db = getFirestore(app);
-const comprasCollection = collection(db, 'compras');
-const produtosCollection = collection(db, 'produtos');
 
-const Compras = () => {
+const Compras = ({ user }) => {
   const [compras, setCompras] = useState([]);
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,7 +27,11 @@ const Compras = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const unsubscribeCompras = onSnapshot(comprasCollection, (snapshot) => {
+    if (!user) return;
+
+    const comprasCollection = collection(db, 'compras');
+    const qCompras = query(comprasCollection, where("userId", "==", user.uid));
+    const unsubscribeCompras = onSnapshot(qCompras, (snapshot) => {
       const comprasData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setCompras(comprasData);
       setLoading(false);
@@ -39,7 +41,9 @@ const Compras = () => {
       setLoading(false);
     });
 
-    const unsubscribeProdutos = onSnapshot(produtosCollection, (snapshot) => {
+    const produtosCollection = collection(db, 'produtos');
+    const qProdutos = query(produtosCollection, where("userId", "==", user.uid));
+    const unsubscribeProdutos = onSnapshot(qProdutos, (snapshot) => {
       const produtosData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setProdutos(produtosData);
     });
@@ -48,7 +52,7 @@ const Compras = () => {
       unsubscribeCompras();
       unsubscribeProdutos();
     };
-  }, []);
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,6 +75,11 @@ const Compras = () => {
         const produtoData = produtoDoc.data();
         const novaQuantidade = produtoData.quantidade + parseInt(formData.quantidade);
 
+        const compraData = {
+          ...formData,
+          userId: user.uid,
+        };
+
         if (editingCompra) {
           const compraDocRef = doc(db, 'compras', editingCompra.id);
           const compraDoc = await transaction.get(compraDocRef);
@@ -78,10 +87,11 @@ const Compras = () => {
           const quantidadeAtualizada = produtoData.quantidade - quantidadeAntiga + parseInt(formData.quantidade);
           
           transaction.update(produtoDocRef, { quantidade: quantidadeAtualizada });
-          transaction.update(compraDocRef, formData);
+          transaction.update(compraDocRef, compraData);
         } else {
+          const comprasCollection = collection(db, 'compras');
           transaction.update(produtoDocRef, { quantidade: novaQuantidade });
-          transaction.set(doc(comprasCollection), formData);
+          transaction.set(doc(comprasCollection), compraData);
         }
       });
 

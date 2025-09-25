@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
+import { getFirestore, collection, onSnapshot, query, where } from 'firebase/firestore';
 import { app } from '../firebase';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { TrendingUp, Package, ShoppingCart, Users, DollarSign } from 'lucide-react';
 
 const db = getFirestore(app);
-const produtosCollection = collection(db, 'produtos');
-const clientesCollection = collection(db, 'clientes');
-const vendasCollection = collection(db, 'vendas');
-const comprasCollection = collection(db, 'compras');
 
-const Dashboard = () => {
+const Dashboard = ({ user }) => {
   const [produtos, setProdutos] = useState([]);
   const [clientes, setClientes] = useState([]);
   const [vendas, setVendas] = useState([]);
@@ -26,23 +22,33 @@ const Dashboard = () => {
   });
 
   useEffect(() => {
-    const unsubscribeProdutos = onSnapshot(produtosCollection, (snapshot) => {
+    if (!user) return;
+
+    const produtosCollection = collection(db, 'produtos');
+    const qProdutos = query(produtosCollection, where("userId", "==", user.uid));
+    const unsubscribeProdutos = onSnapshot(qProdutos, (snapshot) => {
       const produtosData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setProdutos(produtosData);
       setLoading(false);
     });
 
-    const unsubscribeClientes = onSnapshot(clientesCollection, (snapshot) => {
+    const clientesCollection = collection(db, 'clientes');
+    const qClientes = query(clientesCollection, where("userId", "==", user.uid));
+    const unsubscribeClientes = onSnapshot(qClientes, (snapshot) => {
       const clientesData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setClientes(clientesData);
     });
 
-    const unsubscribeVendas = onSnapshot(vendasCollection, (snapshot) => {
+    const vendasCollection = collection(db, 'vendas');
+    const qVendas = query(vendasCollection, where("userId", "==", user.uid));
+    const unsubscribeVendas = onSnapshot(qVendas, (snapshot) => {
       const vendasData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setVendas(vendasData);
     });
 
-    const unsubscribeCompras = onSnapshot(comprasCollection, (snapshot) => {
+    const comprasCollection = collection(db, 'compras');
+    const qCompras = query(comprasCollection, where("userId", "==", user.uid));
+    const unsubscribeCompras = onSnapshot(qCompras, (snapshot) => {
       const comprasData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setCompras(comprasData);
     });
@@ -53,7 +59,7 @@ const Dashboard = () => {
       unsubscribeVendas();
       unsubscribeCompras();
     };
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     const calcularStats = () => {

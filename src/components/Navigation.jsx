@@ -5,8 +5,14 @@ import {
   Package, 
   ShoppingCart, 
   TrendingUp, 
-  Users
+  Users,
+  LogOut
 } from 'lucide-react';
+import { getAuth, signOut } from 'firebase/auth';
+import { app } from '../firebase';
+import { Button } from './ui/button';
+
+const auth = getAuth(app);
 
 const Navigation = () => {
   const location = useLocation();
@@ -19,11 +25,23 @@ const Navigation = () => {
     { path: '/clientes', icon: Users, label: 'Clientes' },
   ];
 
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
+  };
+
   return (
     <>
       {/* Header */}
       <header className="bg-white border-b border-border p-4 flex justify-between items-center">
         <h1 className="text-xl font-bold text-primary">Kaena Estoque</h1>
+        <Button variant="ghost" size="sm" onClick={handleLogout}>
+          <LogOut className="h-4 w-4 mr-2" />
+          Sair
+        </Button>
       </header>
 
       {/* Bottom Navigation */}

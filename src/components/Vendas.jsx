@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getFirestore, collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, runTransaction } from 'firebase/firestore';
+import { getFirestore, collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, runTransaction, query, where } from 'firebase/firestore';
 import { app } from '../firebase';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -11,11 +11,8 @@ import { Plus, Edit, Trash2, TrendingUp } from 'lucide-react';
 import { Alert, AlertDescription } from './ui/alert';
 
 const db = getFirestore(app);
-const vendasCollection = collection(db, 'vendas');
-const produtosCollection = collection(db, 'produtos');
-const clientesCollection = collection(db, 'clientes');
 
-const Vendas = () => {
+const Vendas = ({ user }) => {
   const [vendas, setVendas] = useState([]);
   const [produtos, setProdutos] = useState([]);
   const [clientes, setClientes] = useState([]);
@@ -32,7 +29,11 @@ const Vendas = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const unsubscribeVendas = onSnapshot(vendasCollection, (snapshot) => {
+    if (!user) return;
+
+    const vendasCollection = collection(db, 'vendas');
+    const qVendas = query(vendasCollection, where("userId", "==", user.uid));
+    const unsubscribeVendas = onSnapshot(qVendas, (snapshot) => {
       const vendasData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setVendas(vendasData);
       setLoading(false);
@@ -42,12 +43,16 @@ const Vendas = () => {
       setLoading(false);
     });
 
-    const unsubscribeProdutos = onSnapshot(produtosCollection, (snapshot) => {
+    const produtosCollection = collection(db, 'produtos');
+    const qProdutos = query(produtosCollection, where("userId", "==", user.uid));
+    const unsubscribeProdutos = onSnapshot(qProdutos, (snapshot) => {
       const produtosData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setProdutos(produtosData);
     });
 
-    const unsubscribeClientes = onSnapshot(clientesCollection, (snapshot) => {
+    const clientesCollection = collection(db, 'clientes');
+    const qClientes = query(clientesCollection, where("userId", "==", user.uid));
+    const unsubscribeClientes = onSnapshot(qClientes, (snapshot) => {
       const clientesData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setClientes(clientesData);
     });
@@ -57,7 +62,7 @@ const Vendas = () => {
       unsubscribeProdutos();
       unsubscribeClientes();
     };
-  }, []);
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -80,6 +85,11 @@ const Vendas = () => {
         const produtoData = produtoDoc.data();
         const novaQuantidade = produtoData.quantidade - parseInt(formData.quantidade);
 
+        const vendaData = {
+          ...formData,
+          userId: user.uid,
+        };
+
         if (editingVenda) {
           const vendaDocRef = doc(db, 'vendas', editingVenda.id);
           const vendaDoc = await transaction.get(vendaDocRef);
@@ -91,14 +101,15 @@ const Vendas = () => {
           }
 
           transaction.update(produtoDocRef, { quantidade: quantidadeAtualizada });
-          transaction.update(vendaDocRef, formData);
+          transaction.update(vendaDocRef, vendaData);
         } else {
           if (novaQuantidade < 0) {
             throw new Error("Estoque insuficiente!");
           }
 
+          const vendasCollection = collection(db, 'vendas');
           transaction.update(produtoDocRef, { quantidade: novaQuantidade });
-          transaction.set(doc(vendasCollection), formData);
+          transaction.set(doc(vendasCollection), vendaData);
         }
       });
 

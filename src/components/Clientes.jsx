@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getFirestore, collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
+import { getFirestore, collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, query, where } from 'firebase/firestore';
 import { app } from '../firebase';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -10,9 +10,8 @@ import { Plus, Edit, Trash2, Users, MessageCircle } from 'lucide-react';
 import { Alert, AlertDescription } from './ui/alert';
 
 const db = getFirestore(app);
-const clientesCollection = collection(db, 'clientes');
 
-const Clientes = () => {
+const Clientes = ({ user }) => {
   const [clientes, setClientes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -24,7 +23,12 @@ const Clientes = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(clientesCollection, (snapshot) => {
+    if (!user) return;
+
+    const clientesCollection = collection(db, 'clientes');
+    const q = query(clientesCollection, where("userId", "==", user.uid));
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
       const clientesData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setClientes(clientesData);
       setLoading(false);
@@ -35,7 +39,7 @@ const Clientes = () => {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,6 +58,8 @@ const Clientes = () => {
 
     try {
       const clienteData = {
+        ...formData,
+        userId: user.uid,
         nome: formData.nome.trim(),
         whatsapp: whatsappClean
       };
@@ -62,6 +68,7 @@ const Clientes = () => {
         const clienteDoc = doc(db, 'clientes', editingCliente.id);
         await updateDoc(clienteDoc, clienteData);
       } else {
+        const clientesCollection = collection(db, 'clientes');
         await addDoc(clientesCollection, clienteData);
       }
       
