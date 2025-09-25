@@ -101,7 +101,7 @@ const Vendas = ({ user }) => {
           }
 
           transaction.update(produtoDocRef, { quantidade: quantidadeAtualizada });
-          transaction.update(vendaDocRef, vendaData);
+          transaction.set(vendaDocRef, vendaData, { merge: true });
         } else {
           if (novaQuantidade < 0) {
             throw new Error("Estoque insuficiente!");

@@ -62,7 +62,7 @@ const Estoque = ({ user }) => {
 
       if (editingProduct) {
         const productDoc = doc(db, 'produtos', editingProduct.id);
-        await updateDoc(productDoc, productData);
+        await setDoc(productDoc, productData, { merge: true });
       } else {
         const produtosCollection = collection(db, 'produtos');
         await addDoc(produtosCollection, productData);

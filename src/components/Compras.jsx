@@ -87,7 +87,7 @@ const Compras = ({ user }) => {
           const quantidadeAtualizada = produtoData.quantidade - quantidadeAntiga + parseInt(formData.quantidade);
           
           transaction.update(produtoDocRef, { quantidade: quantidadeAtualizada });
-          transaction.update(compraDocRef, compraData);
+          transaction.set(compraDocRef, compraData, { merge: true });
         } else {
           const comprasCollection = collection(db, 'compras');
           transaction.update(produtoDocRef, { quantidade: novaQuantidade });

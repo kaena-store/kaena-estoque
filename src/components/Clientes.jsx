@@ -66,7 +66,7 @@ const Clientes = ({ user }) => {
 
       if (editingCliente) {
         const clienteDoc = doc(db, 'clientes', editingCliente.id);
-        await updateDoc(clienteDoc, clienteData);
+        await setDoc(clienteDoc, clienteData, { merge: true });
       } else {
         const clientesCollection = collection(db, 'clientes');
         await addDoc(clientesCollection, clienteData);
