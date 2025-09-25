@@ -9,6 +9,7 @@
 
 # Log files
 *.log
+logs/
 
 # Firebase
 firebase-debug.log
