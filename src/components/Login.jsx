@@ -12,9 +12,7 @@ const auth = getAuth(app); // Initialize auth
 
 const Login = () => {
   const [email, setEmail] = useState('kaenaadm@gmail.com');
-  const [password, setPassword] = useState('$Sucesso2025
-
-);
+  const [password, setPassword] = useState('$Sucesso2025$');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -83,4 +81,3 @@ const Login = () => {
 };
 
 export default Login;
-
