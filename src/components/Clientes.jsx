@@ -261,3 +261,4 @@ const Clientes = ({ user }) => {
   );
 };
 
+export default Clientes;
