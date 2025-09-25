@@ -1,0 +1,8 @@
+﻿2025-09-25T16:59:23.6062152Z ##[group]Run ls -F .github/workflows
+2025-09-25T16:59:23.6062524Z [36;1mls -F .github/workflows[0m
+2025-09-25T16:59:23.6091152Z shell: /usr/bin/bash -e ***0***
+2025-09-25T16:59:23.6091452Z env:
+2025-09-25T16:59:23.6091740Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-25T16:59:23.6092097Z ##[endgroup]
+2025-09-25T16:59:23.6148589Z firebase-hosting-merge.yml
+2025-09-25T16:59:23.6149155Z firebase-hosting-pull-request.yml

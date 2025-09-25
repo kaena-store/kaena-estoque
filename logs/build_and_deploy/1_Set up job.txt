@@ -1,0 +1,31 @@
+﻿2025-09-25T16:59:06.3066188Z Current runner version: '2.328.0'
+2025-09-25T16:59:06.3104790Z ##[group]Runner Image Provisioner
+2025-09-25T16:59:06.3106592Z Hosted Compute Agent
+2025-09-25T16:59:06.3107928Z Version: 20250912.392
+2025-09-25T16:59:06.3109446Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
+2025-09-25T16:59:06.3111286Z Build Date: 2025-09-12T15:23:14Z
+2025-09-25T16:59:06.3112831Z ##[endgroup]
+2025-09-25T16:59:06.3114046Z ##[group]Operating System
+2025-09-25T16:59:06.3115587Z Ubuntu
+2025-09-25T16:59:06.3116912Z 24.04.3
+2025-09-25T16:59:06.3118117Z LTS
+2025-09-25T16:59:06.3119537Z ##[endgroup]
+2025-09-25T16:59:06.3121024Z ##[group]Runner Image
+2025-09-25T16:59:06.3122537Z Image: ubuntu-24.04
+2025-09-25T16:59:06.3123859Z Version: 20250922.53.1
+2025-09-25T16:59:06.3126195Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250922.53/images/ubuntu/Ubuntu2404-Readme.md
+2025-09-25T16:59:06.3129228Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250922.53
+2025-09-25T16:59:06.3132101Z ##[endgroup]
+2025-09-25T16:59:06.3135200Z ##[group]GITHUB_TOKEN Permissions
+2025-09-25T16:59:06.3138575Z Contents: read
+2025-09-25T16:59:06.3139915Z Metadata: read
+2025-09-25T16:59:06.3141586Z Packages: read
+2025-09-25T16:59:06.3142785Z ##[endgroup]
+2025-09-25T16:59:06.3147073Z Secret source: Actions
+2025-09-25T16:59:06.3148625Z Prepare workflow directory
+2025-09-25T16:59:06.3639714Z Prepare all required actions
+2025-09-25T16:59:06.3697303Z Getting action download info
+2025-09-25T16:59:06.6201575Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-09-25T16:59:06.6927147Z Download action repository 'pnpm/action-setup@v2' (SHA:eae0cfeb286e66ffb5155f1a79b90583a127a68b)
+2025-09-25T16:59:06.9790293Z Download action repository 'FirebaseExtended/action-hosting-deploy@v0' (SHA:e2eda2e106cfa35cdbcf4ac9ddaf6c4756df2c8c)
+2025-09-25T16:59:07.2688899Z Complete job name: build_and_deploy
