@@ -256,3 +256,4 @@ const Estoque = ({ user }) => {
   );
 };
 
+export default Estoque;
