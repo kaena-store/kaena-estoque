@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getFirestore, collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, runTransaction, query, where } from 'firebase/firestore';
-import { app } from '../firebase';
+import { collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, runTransaction, query, where, getDoc } from 'firebase/firestore';
+import { app, db } from '../firebase';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
@@ -9,8 +9,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Plus, Edit, Trash2, TrendingUp } from 'lucide-react';
 import { Alert, AlertDescription } from './ui/alert';
-
-const db = getFirestore(app);
 
 const Vendas = ({ user }) => {
   const [vendas, setVendas] = useState([]);
@@ -135,24 +133,46 @@ const Vendas = ({ user }) => {
   };
 
   const handleDelete = async (id) => {
+    console.log("Attempting to delete sale with id:", id);
     if (window.confirm('Tem certeza que deseja excluir esta venda?')) {
       try {
-        await runTransaction(db, async (transaction) => {
-          const vendaDocRef = doc(db, 'vendas', id);
-          const vendaDoc = await transaction.get(vendaDocRef);
-          const { produtoId, quantidade } = vendaDoc.data();
+        console.log("User confirmed deletion.");
+        const vendaDocRef = doc(db, 'vendas', id);
+        const vendaDoc = await getDoc(vendaDocRef);
 
-          const produtoDocRef = doc(db, 'produtos', produtoId);
-          const produtoDoc = await transaction.get(produtoDocRef);
+        if (!vendaDoc.exists()) {
+          console.log("Sale document not found in the database. Removing from local state.");
+          setVendas(vendas.filter(venda => venda.id !== id));
+          setError("Esta venda já foi removida.");
+          return;
+        }
+
+        console.log("Sale document found. Proceeding with deletion.");
+        const { produtoId, quantidade } = vendaDoc.data();
+        console.log("Product ID:", produtoId, "Quantity:", quantidade);
+
+        const produtoDocRef = doc(db, 'produtos', produtoId);
+        const produtoDoc = await getDoc(produtoDocRef);
+
+        if (produtoDoc.exists()) {
+          console.log("Product document found. Updating stock.");
           const novaQuantidade = produtoDoc.data().quantidade + quantidade;
+          console.log("New product quantity:", novaQuantidade);
+          await updateDoc(produtoDocRef, { quantidade: novaQuantidade });
+          console.log("Product stock updated successfully.");
+        } else {
+          console.log("Product document not found. Skipping stock update.");
+        }
 
-          transaction.update(produtoDocRef, { quantidade: novaQuantidade });
-          transaction.delete(vendaDocRef);
-        });
+        await deleteDoc(vendaDocRef);
+        console.log("Sale document deleted successfully.");
+
       } catch (error) {
         console.error('Erro ao excluir venda:', error);
-        setError('Erro ao excluir venda');
+        setError('Erro ao excluir venda: ' + error.message);
       }
+    } else {
+      console.log("User cancelled deletion.");
     }
   };
 

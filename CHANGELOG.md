@@ -51,6 +51,16 @@ All notable changes to this project will be documented in this file.
 
 ### Removed
 
+-   Removed the data migration logic from `localStorage` to Firestore.
+
+### Fixed
+
+-   Disabled Firestore offline persistence to resolve data inconsistency issues.
+-   Fixed various import errors in the components.
+-   Improved error handling in the `Vendas` component.
+
+### Removed
+
 -   `dados firebase.txt` file.
 -   `DEPLOY_FIREBASE.md` and `README.md` files.
 -   `logs/` folder added to `.gitignore`.

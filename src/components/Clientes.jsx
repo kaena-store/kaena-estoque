@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getFirestore, collection, onSnapshot, addDoc, setDoc, updateDoc, deleteDoc, doc, query, where } from 'firebase/firestore';
-import { app } from '../firebase';
+import { collection, onSnapshot, addDoc, setDoc, updateDoc, deleteDoc, doc, query, where } from 'firebase/firestore';
+import { app, db } from '../firebase';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
@@ -8,8 +8,6 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { Plus, Edit, Trash2, Users, MessageCircle } from 'lucide-react';
 import { Alert, AlertDescription } from './ui/alert';
-
-const db = getFirestore(app);
 
 const Clientes = ({ user }) => {
   const [clientes, setClientes] = useState([]);

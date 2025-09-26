@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { getFirestore, collection, onSnapshot, query, where } from 'firebase/firestore';
-import { app } from '../firebase';
+import { collection, onSnapshot, query, where } from 'firebase/firestore';
+import { app, db } from '../firebase';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { TrendingUp, Package, ShoppingCart, Users, DollarSign } from 'lucide-react';
-
-const db = getFirestore(app);
 
 const Dashboard = ({ user }) => {
   const [produtos, setProdutos] = useState([]);
