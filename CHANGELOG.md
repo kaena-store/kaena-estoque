@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+-   Adicionado "Tamanho Único" como uma opção de tamanho de roupa.
+
 -   **Firebase Configuration:**
     -   Moved Firebase configuration from `dados firebase.txt` to `src/firebase.js`.
     -   Replaced hardcoded Firebase credentials with environment variables (`VITE_FIREBASE_API_KEY`, etc.) in `src/firebase.js`.
