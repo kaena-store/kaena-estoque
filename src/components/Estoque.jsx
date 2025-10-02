@@ -22,7 +22,7 @@ const Estoque = ({ user }) => {
   });
   const [error, setError] = useState('');
 
-  const tamanhos = ['PP', 'P', 'M', 'G', 'GG', 'XG', 'XXG', 'Tamanho Único'];
+  const tamanhos = ['PP', 'P', 'M', 'G', 'GG', 'XG', 'XXG', 'U'];
 
   useEffect(() => {
     if (!user) return;
